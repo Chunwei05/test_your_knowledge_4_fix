@@ -90,3 +90,32 @@ class TestCalculatorMultiplyMethod:
         calc.answer = 3  # Set directly for isolation
         calc.multiply(-2)
         assert calc.get_answer() == -6
+
+class TestCalculatorPowerMethod:
+    
+    def test_power_from_initial_state(self):
+        """Test raising zero to a power"""
+        calc = Calculator()
+        calc.power(3)
+        assert calc.get_answer() == 0  # 0^anything = 0 (except 0^0, but we'll handle that)
+    
+    def test_power_from_non_zero_state(self):
+        """Test raising a number to a power"""
+        calc = Calculator()
+        calc.answer = 2  # Set directly for isolation
+        calc.power(3)
+        assert calc.get_answer() == 8
+    
+    def test_power_of_zero(self):
+        """Test raising to power of 0"""
+        calc = Calculator()
+        calc.answer = 5  # Set directly for isolation
+        calc.power(0)
+        assert calc.get_answer() == 1
+    
+    def test_power_of_one(self):
+        """Test raising to power of 1"""
+        calc = Calculator()
+        calc.answer = 7  # Set directly for isolation
+        calc.power(1)
+        assert calc.get_answer() == 7

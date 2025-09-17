@@ -119,3 +119,29 @@ class TestCalculatorPowerMethod:
         calc.answer = 7  # Set directly for isolation
         calc.power(1)
         assert calc.get_answer() == 7
+
+class TestCalculatorMethodChaining:
+    
+    def test_simple_chaining(self):
+        """Test basic method chaining"""
+        calc = Calculator()
+        calc.add(1).multiply(4).subtract(1)
+        assert calc.get_answer() == 3
+    
+    def test_complex_chaining_operations(self):
+        """Test more complex method chaining"""
+        calc = Calculator()
+        calc.add(10).subtract(3).multiply(2).power(2)
+        assert calc.get_answer() == 196  # (10-3)*2 = 14, 14^2 = 196
+    
+    def test_chaining_with_negative_numbers(self):
+        """Test chaining with negative numbers"""
+        calc = Calculator()
+        calc.add(-5).multiply(-2).subtract(3)
+        assert calc.get_answer() == 7  # (-5)*(-2)=10, 10-3=7
+    
+    def test_reset_in_chain(self):
+        """Test reset within a chain"""
+        calc = Calculator()
+        calc.add(5).multiply(3).reset().add(10)
+        assert calc.get_answer() == 10

@@ -16,7 +16,6 @@ class TestCalculatorInitialState:
         calc.reset()
         assert calc.get_answer() == 0
 
-    # tests/test_calculator.py (new test class for add method)
 class TestCalculatorAddMethod:
     
     def test_add_positive_number(self):
@@ -43,7 +42,6 @@ class TestCalculatorAddMethod:
         calc.add(2.5)
         assert calc.get_answer() == 2.5
 
-    # tests/test_calculator.py (new test class for subtract method)
 class TestCalculatorSubtractMethod:
     
     def test_subtract_positive_number_from_zero(self):
@@ -63,3 +61,32 @@ class TestCalculatorSubtractMethod:
         calc = Calculator()
         calc.subtract(0)
         assert calc.get_answer() == 0
+
+class TestCalculatorMultiplyMethod:
+    
+    def test_multiply_positive_number_from_initial_state(self):
+        """Test multiplying from initial zero state"""
+        calc = Calculator()
+        calc.multiply(5)
+        assert calc.get_answer() == 0  # 0 * anything = 0
+    
+    def test_multiply_from_non_zero_state(self):
+        """Test multiplying from a non-zero state"""
+        calc = Calculator()
+        calc.answer = 4  # Set directly for isolation
+        calc.multiply(3)
+        assert calc.get_answer() == 12
+    
+    def test_multiply_by_zero(self):
+        """Test multiplying by zero"""
+        calc = Calculator()
+        calc.answer = 7  # Set directly for isolation
+        calc.multiply(0)
+        assert calc.get_answer() == 0
+    
+    def test_multiply_by_negative(self):
+        """Test multiplying by negative number"""
+        calc = Calculator()
+        calc.answer = 3  # Set directly for isolation
+        calc.multiply(-2)
+        assert calc.get_answer() == -6

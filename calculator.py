@@ -16,3 +16,7 @@ class Calculator:
     def subtract(self, num):
         self.answer -= num
         return self
+
+    def multiply(self, num):
+        self.answer *= num
+        return self

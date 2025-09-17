@@ -12,3 +12,7 @@ class Calculator:
     def add(self, num):
         self.answer += num
         return self
+
+    def subtract(self, num):
+        self.answer -= num
+        return self

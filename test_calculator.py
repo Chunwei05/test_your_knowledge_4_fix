@@ -145,3 +145,24 @@ class TestCalculatorMethodChaining:
         calc = Calculator()
         calc.add(5).multiply(3).reset().add(10)
         assert calc.get_answer() == 10
+
+class TestCalculatorEdgeCases:
+    
+    def test_power_of_negative_exponent(self):
+        """Test raising to negative power"""
+        calc = Calculator()
+        calc.answer = 2  # Set directly for isolation
+        calc.power(-1)
+        assert calc.get_answer() == 0.5
+    
+    def test_float_operations(self):
+        """Test operations with floating point numbers"""
+        calc = Calculator()
+        calc.add(1.5).multiply(2).subtract(0.5)
+        assert calc.get_answer() == pytest.approx(2.5)
+    
+    def test_large_numbers(self):
+        """Test operations with large numbers"""
+        calc = Calculator()
+        calc.add(1000000).multiply(1000)
+        assert calc.get_answer() == 1000000000

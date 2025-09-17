@@ -42,3 +42,24 @@ class TestCalculatorAddMethod:
         calc = Calculator()
         calc.add(2.5)
         assert calc.get_answer() == 2.5
+
+    # tests/test_calculator.py (new test class for subtract method)
+class TestCalculatorSubtractMethod:
+    
+    def test_subtract_positive_number_from_zero(self):
+        """Test subtracting from initial zero state"""
+        calc = Calculator()
+        calc.subtract(3)
+        assert calc.get_answer() == -3
+    
+    def test_subtract_negative_number_from_zero(self):
+        """Test subtracting negative number (equivalent to adding)"""
+        calc = Calculator()
+        calc.subtract(-2)
+        assert calc.get_answer() == 2
+    
+    def test_subtract_zero(self):
+        """Test subtracting zero"""
+        calc = Calculator()
+        calc.subtract(0)
+        assert calc.get_answer() == 0

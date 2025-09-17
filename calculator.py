@@ -8,3 +8,7 @@ class Calculator:
     def reset(self):
         self.answer = 0
         return self
+
+    def add(self, num):
+        self.answer += num
+        return self
